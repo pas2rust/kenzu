@@ -10,7 +10,7 @@ exclude = [
     "tests",
     "main.rs"
 ]
-categories = ["development-tools", "code-generation", "parser-implementations"]
+categories = ["development-tools", "parser-implementations"]
 description = "Procedural macros for builder pattern generation and validation"
 keywords = ["macro", "builder", "validation", "codegen", "derive"]
 authors = ["pas2rust <pas2000@proton.me>"]
