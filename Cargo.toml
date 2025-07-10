@@ -1,0 +1,23 @@
+[package]
+name = "kenzu"
+version = "0.0.1"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/pas2rust/kenzu"
+readme = "README.md"
+exclude = [
+    "tests/*",
+    "tests",
+    "main.rs"
+]
+categories = ["development-tools", "code-generation", "parser-implementations"]
+description = "Procedural macros for builder pattern generation and validation"
+keywords = ["macro", "builder", "validation", "codegen", "derive"]
+authors = ["pas2rust <pas2000@proton.me>"]
+homepage = "https://github.com/pas2rust/kenzu"
+documentation = "https://docs.rs/kenzu"
+
+[lib]
+proc-macro = true
+
+[dependencies]
