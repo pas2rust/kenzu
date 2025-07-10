@@ -1,6 +1,6 @@
 [package]
 name = "kenzu"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/pas2rust/kenzu"
@@ -16,11 +16,6 @@ keywords = ["macro", "builder", "validation", "codegen", "derive"]
 authors = ["pas2rust <pas2000@proton.me>"]
 homepage = "https://github.com/pas2rust/kenzu"
 documentation = "https://docs.rs/kenzu"
-
-[features]
-# Optional features for enabling specific derive macros
-builder = []
-mut_builder = []
 
 [lib]
 proc-macro = true

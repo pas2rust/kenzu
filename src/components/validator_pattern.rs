@@ -1,8 +1,7 @@
 use proc_macro2::TokenStream;
 use quote::quote;
-use syn::Field;
 use regex::Regex;
- // Rust 1.70+
+use syn::Field;
 
 use crate::components::get_build::{Builder, get_build};
 
@@ -12,11 +11,8 @@ pub fn validator_pattern(field: &Field) -> TokenStream {
 
     if let (Some(pattern), Some(err)) = (pattern.as_ref(), err.as_ref()) {
         if let Err(e) = Regex::new(pattern) {
-            return syn::Error::new_spanned(
-                field,
-                format!("invalid regex pattern: {}", e),
-            )
-            .to_compile_error();
+            return syn::Error::new_spanned(field, format!("invalid regex pattern: {}", e))
+                .to_compile_error();
         }
 
         return quote! {

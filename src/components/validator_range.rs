@@ -14,7 +14,9 @@ pub fn validator_range(input: &DeriveInput, field: &Field) -> TokenStream {
     }
 
     if let (Some(min_ts), Some(max_ts)) = (&range.min, &range.max) {
-        if let (Some(min_lit), Some(max_lit)) = (try_parse_literal(min_ts), try_parse_literal(max_ts)) {
+        if let (Some(min_lit), Some(max_lit)) =
+            (try_parse_literal(min_ts), try_parse_literal(max_ts))
+        {
             let min_val_opt = match &min_lit {
                 Lit::Int(lit_int) => lit_int.base10_parse::<i128>().ok(),
                 Lit::Float(lit_float) => lit_float.base10_parse::<f64>().ok().map(|f| f as i128),
@@ -30,7 +32,10 @@ pub fn validator_range(input: &DeriveInput, field: &Field) -> TokenStream {
                 if min_val > max_val {
                     return syn::Error::new_spanned(
                         field,
-                        format!("invalid range: min ({}) cannot be greater than max ({})", min_val, max_val),
+                        format!(
+                            "invalid range: min ({}) cannot be greater than max ({})",
+                            min_val, max_val
+                        ),
                     )
                     .to_compile_error();
                 }
