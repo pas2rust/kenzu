@@ -17,7 +17,17 @@ authors = ["pas2rust <pas2000@proton.me>"]
 homepage = "https://github.com/pas2rust/kenzu"
 documentation = "https://docs.rs/kenzu"
 
+[features]
+# Optional features for enabling specific derive macros
+builder = []
+mut_builder = []
+
 [lib]
 proc-macro = true
 
 [dependencies]
+syn =  "2"
+quote = "1"
+proc-macro2 =  "1"
+regex = "1.11.1"
+mokuya = "0.0.2"
