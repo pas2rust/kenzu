@@ -2,7 +2,7 @@ use proc_macro2::TokenStream;
 use quote::quote;
 use syn::Field;
 use regex::Regex;
-use std::sync::LazyLock; // Rust 1.70+
+ // Rust 1.70+
 
 use crate::components::get_build::{Builder, get_build};
 
