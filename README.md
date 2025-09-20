@@ -3,6 +3,10 @@
 [![Crates.io](https://img.shields.io/crates/v/kenzu.svg)](https://crates.io/crates/kenzu)
 [![Docs.rs](https://docs.rs/kenzu/badge.svg)](https://docs.rs/kenzu)
 [![License](https://img.shields.io/crates/l/kenzu.svg)](https://github.com/pas2rust/kenzu/blob/main/LICENSE)
+![GitHub top language](https://img.shields.io/github/languages/top/pas2rust/kenzu?color=orange&logo=rust&style=flat&logoColor=white)
+![GitHub stars](https://img.shields.io/github/stars/pas2rust/kenzu?color=success&style=flat&logo=github)
+![GitHub forks](https://img.shields.io/github/forks/pas2rust/kenzu?color=orange&logo=Furry%20Network&style=flat&logoColor=white)
+![GitHub last commit](https://img.shields.io/github/last-commit/pas2rust/kenzu?color=ff69b4&label=update&logo=git&style=flat&logoColor=white)
 
 **`kenzu`** is a procedural macro crate for generating **builder patterns** in Rust — both **immutable** and **mutable**, with optional compile-time validation using field-level attributes.
 

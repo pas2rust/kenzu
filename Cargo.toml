@@ -1,6 +1,6 @@
 [package]
 name = "kenzu"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/pas2rust/kenzu"
@@ -24,5 +24,5 @@ proc-macro = true
 syn =  "2"
 quote = "1"
 proc-macro2 =  "1"
-regex = "1.11.1"
-mokuya = "0.0.2"
+regex = "1"
+mokuya = "0"
