@@ -115,7 +115,7 @@ dependencies = [
 
 [[package]]
 name = "kenzu"
-version = "0.0.4"
+version = "0.0.5"
 dependencies = [
  "mokuya",
  "proc-macro2",
