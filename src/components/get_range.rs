@@ -15,22 +15,22 @@ pub fn get_range(attributes: Vec<Attribute>) -> Range {
     for attr in attributes {
         if attr.path().is_ident("range") {
             attr.parse_nested_meta(|meta| {
-                if meta.path.is_ident("min") {
-                    if let Ok(token) = meta.value()?.parse::<TokenStream>() {
-                        range.min = Some(token);
-                    }
-                } else if meta.path.is_ident("max") {
-                    if let Ok(token) = meta.value()?.parse::<TokenStream>() {
-                        range.max = Some(token);
-                    }
-                } else if meta.path.is_ident("err_max") {
-                    if let Ok(err) = meta.value()?.parse::<LitStr>() {
-                        range.err_max = Some(err.value());
-                    }
-                } else if meta.path.is_ident("err_min") {
-                    if let Ok(err) = meta.value()?.parse::<LitStr>() {
-                        range.err_min = Some(err.value());
-                    }
+                if meta.path.is_ident("min")
+                    && let Ok(token) = meta.value()?.parse::<TokenStream>()
+                {
+                    range.min = Some(token);
+                } else if meta.path.is_ident("max")
+                    && let Ok(token) = meta.value()?.parse::<TokenStream>()
+                {
+                    range.max = Some(token);
+                } else if meta.path.is_ident("err_max")
+                    && let Ok(err) = meta.value()?.parse::<LitStr>()
+                {
+                    range.err_max = Some(err.value());
+                } else if meta.path.is_ident("err_min")
+                    && let Ok(err) = meta.value()?.parse::<LitStr>()
+                {
+                    range.err_min = Some(err.value());
                 }
                 Ok(())
             })
