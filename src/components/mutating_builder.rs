@@ -38,7 +38,7 @@ pub fn generate_mutating_build(input: &DeriveInput) -> proc_macro2::TokenStream 
     });
 
     // === Validation checks ===
-    let pattern_checks = fields.clone().map(|field| validator_pattern(field));
+    let pattern_checks = fields.clone().map(validator_pattern);
     let range_checks = fields.clone().map(|field| validator_range(input, field));
 
     // === Async initializer ===
@@ -63,7 +63,7 @@ pub fn generate_mutating_build(input: &DeriveInput) -> proc_macro2::TokenStream 
         let field_type = &field.ty;
         let field_attr = &field.attrs;
 
-        let set_value = super::get_set::get_set_value(&field_attr);
+        let set_value = super::get_set::get_set_value(field_attr);
 
         if let Some(value) = set_value.value {
             quote! {

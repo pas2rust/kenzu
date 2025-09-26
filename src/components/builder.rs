@@ -50,7 +50,7 @@ pub fn generate_build(input: &DeriveInput) -> proc_macro2::TokenStream {
         }
     });
 
-    let check_pattern = fields.iter().map(|field| validator_pattern(field));
+    let check_pattern = fields.iter().map(validator_pattern);
     let check_range = fields.iter().map(|field| validator_range(input, field));
 
     let async_fields_init = fields.iter().map(|field| {
