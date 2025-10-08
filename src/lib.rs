@@ -50,8 +50,8 @@ use components::prelude::*;
 /// ```
 #[proc_macro_derive(Builder, attributes(range, set, build, skip_trait))]
 pub fn builder(input: TokenStream) -> TokenStream {
-    let mut input = parse_macro_input!(input as DeriveInput);
-    add_traits_to_generics(&mut input);
+    let input = parse_macro_input!(input as DeriveInput);
+    //add_traits_to_generics(&mut input);
     let generate_build = generate_build(&input);
     generate_build.into()
 }

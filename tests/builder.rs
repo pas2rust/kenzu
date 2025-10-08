@@ -5,7 +5,7 @@
     not(feature = "tracing")
 ))]*/
 use kenzu::Builder;
-#[derive(Builder, PartialEq, Default)]
+#[derive(Builder, PartialEq)]
 pub struct User {
     pub id: String,
     #[set(value = "name")]
@@ -21,6 +21,13 @@ pub struct User {
     #[set(value = 18)]
     pub age: u8,
     pub gender: String,
+    friend: Friend,
+}
+
+#[derive(Builder, PartialEq)]
+pub struct Friend {
+    #[set(value = "default name")]
+    name: String,
 }
 
 #[test]
@@ -39,6 +46,7 @@ fn builder() {
     assert_eq!(user.password, "password123");
     assert_eq!(user.email, "johndoe@example.com");
     assert_eq!(user.age, 25);
+    assert_eq!(user.friend.name, "default name");
 }
 
 #[test]
@@ -50,7 +58,6 @@ fn builder_invalid() {
         .email("iasjdiasjdasijii")
         .age(25)
         .build();
-
     assert_eq!(user.err().unwrap(), "err");
 }
 
@@ -61,5 +68,6 @@ fn builder_set_value() {
     assert_eq!(user.name, "name");
     assert_eq!(user.email, "email@example.com");
     assert_eq!(user.age, 18);
-    assert_eq!(user.gender, "")
+    assert_eq!(user.gender, "");
+    assert_eq!(user.friend.name, "default name");
 }

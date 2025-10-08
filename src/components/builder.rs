@@ -93,6 +93,11 @@ pub fn generate_build(input: &DeriveInput) -> proc_macro2::TokenStream {
 
             #(#methods)*
         }
+        impl ::std::default::Default for #impl_block_name {
+            fn default() -> Self {
+                Self::new()
+            }
+        }
     };
 
     impl_block
