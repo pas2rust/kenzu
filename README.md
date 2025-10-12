@@ -1,4 +1,3 @@
-# `kenzu`
 [![Crates.io](https://img.shields.io/crates/v/kenzu.svg)](https://crates.io/crates/kenzu)
 [![Docs.rs](https://docs.rs/kenzu/badge.svg)](https://docs.rs/kenzu)
 [![License](https://img.shields.io/crates/l/kenzu.svg)](https://github.com/pas2rust/kenzu/blob/main/LICENSE)
