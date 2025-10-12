@@ -1,46 +1,3 @@
-# `kenzu`
-[![Crates.io](https://img.shields.io/crates/v/kenzu.svg)](https://crates.io/crates/kenzu)
-[![Docs.rs](https://docs.rs/kenzu/badge.svg)](https://docs.rs/kenzu)
-[![License](https://img.shields.io/crates/l/kenzu.svg)](https://github.com/pas2rust/kenzu/blob/main/LICENSE)
-![GitHub top language](https://img.shields.io/github/languages/top/pas2rust/kenzu?color=orange&logo=rust&style=flat&logoColor=white)
-![GitHub stars](https://img.shields.io/github/stars/pas2rust/kenzu?color=success&style=flat&logo=github)
-![GitHub forks](https://img.shields.io/github/forks/pas2rust/kenzu?color=orange&logo=Furry%20Network&style=flat&logoColor=white)
-![Tests](https://raw.githubusercontent.com/pas2rust/badges/main/kenzu-tests.svg)
-![Crates.io downloads](https://img.shields.io/crates/d/kenzu.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/pas2rust/kenzu?color=ff69b4&label=update&logo=git&style=flat&logoColor=white)
-
-
-# **kenzu**
-
-`kenzu` is a **procedural macro crate** for Rust that generates **automatic builders** with full support for complex defaults, field validation, and type wrappers. It eliminates boilerplate in configuration structs, domain models, or input data, improving **safety**, **clarity**, and **expressiveness**.
-
----
-
-## ✨ Features
-
-- 🧱 `#[derive(Builder)]` — generates an **immutable builder** with a fluent `.build()` interface.  
-- 🧰 `#[opt(default = ...)]` — supports **complex defaults**, including literals, structs, `Vec`s, and wrappers.  
-- 🔍 `#[opt(pattern = "...", err = "...")]` — regex-based validation for string fields.  
-- 🔢 `#[opt(min = ..., max = ..., err_min = ..., err_max = ...)]` — numeric range validation.    
-- ⚡ Supports **type wrappers**, such as `UserEmail`, `UserAge`, `UserRating`.  
-- 💡 Automatically generates `Default` for all fields, respecting user-provided defaults.  
-- 🔄 Supports **primitive types**, **Strings**, **composite structs**, **Vecs**, and custom wrappers.
-
----
-
-## ⚙️ Installation
-
-Add it to your `Cargo.toml`:
-
-```bash
-cargo add kenzu
-```
-
-## 🚀 Usage 
-
-### Builder
-
-```rust
 use kenzu::Builder;
 
 #[derive(Builder, Debug)]
@@ -381,29 +338,3 @@ fn replace_friends_vector() -> Result<(), String> {
     assert_eq!(user.friends[0].name, "New Friend");
     Ok(())
 }
-
-```
-
----
-
-<h2 align="center">
-  <strong>❤️ Donate</strong>
-</h2>
-
-<p align="center">
-  <a href="https://github.com/pas2rust/pas2rust/blob/main/pas-monero-donate.png" style="text-decoration:none; color:inherit;">
-    <img src="https://img.shields.io/badge/Monero%20QR-FF6600?style=flat&logo=monero&logoColor=white" alt="Monero QR"/>
-  </a>
-  <a href="https://github.com/pas2rust/pas2rust/blob/main/pas-bitcoin-donate.png" style="text-decoration:none; color:inherit;">
-    <img src="https://img.shields.io/badge/BTC%20QR-EAB300?style=flat&logo=bitcoin&logoColor=white" alt="BTC QR"/>
-  </a>
-  <a href="https://revolut.me/pas2rust" style="text-decoration:none; color:inherit;">
-    <img src="https://img.shields.io/badge/Revolut%20QR-Blue?style=flat&logo=revolut&logoColor=white" alt="Revolut QR"/>
-  </a>
-  <a href="https://wise.com/pay/me/pedroaugustos99" style="text-decoration:none; color:inherit;">
-    <img src="https://img.shields.io/badge/Wise%20QR-1CA0F2?style=flat&logo=wise&logoColor=white" alt="Wise QR"/>
-  </a>
-</p>
-
-
----

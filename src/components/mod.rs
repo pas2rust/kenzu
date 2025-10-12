@@ -1,9 +1,7 @@
-pub mod builder;
-pub mod get_build;
-pub mod get_range;
-pub mod get_set;
-//pub mod get_skipped_traits;
-pub mod mutating_builder;
+pub mod generate;
+pub mod generate_field_methods;
+pub mod generate_method;
+pub mod get_opt;
+pub mod get_type_name_ts;
+pub mod import;
 pub mod prelude;
-pub mod validator_pattern;
-pub mod validator_range;
