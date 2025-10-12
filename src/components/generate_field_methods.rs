@@ -2,10 +2,7 @@ use super::prelude::*;
 
 pub fn generate_field_methods(input: &DeriveInput, field: &Field) -> TokenStream {
     let field_ident: &Ident = field.ident.as_ref().expect("field name must be set");
-    let mut_field_ident = Ident::new(
-        &format!("mut_{}", field_ident.to_string()),
-        Span::call_site(),
-    );
+    let mut_field_ident = Ident::new(&format!("mut_{}", field_ident), Span::call_site());
     let Opt {
         name,
         err: _,
@@ -19,7 +16,7 @@ pub fn generate_field_methods(input: &DeriveInput, field: &Field) -> TokenStream
     let ty = &field.ty;
     let struct_name = get_struct_name(input);
     let impl_block = get_impl(input);
-    let type_name_ts_special: TokenStream = get_type_name_ts(&struct_name, &field_ident, name);
+    let type_name_ts_special: TokenStream = get_type_name_ts(&struct_name, field_ident, name);
 
     let method: TokenStream = generate_method(input, field);
 

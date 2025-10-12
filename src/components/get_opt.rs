@@ -48,10 +48,10 @@ pub fn get_opt(attributes: &Vec<Attribute>) -> Opt {
                     if let Ok(lit) = meta.value()?.parse::<LitStr>() {
                         opt.err_min = Some(lit.value());
                     }
-                } else if meta.path.is_ident("err_max") {
-                    if let Ok(lit) = meta.value()?.parse::<LitStr>() {
-                        opt.err_max = Some(lit.value());
-                    }
+                } else if meta.path.is_ident("err_max")
+                    && let Ok(lit) = meta.value()?.parse::<LitStr>()
+                {
+                    opt.err_max = Some(lit.value());
                 }
                 Ok(())
             })

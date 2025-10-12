@@ -9,7 +9,7 @@ pub fn generate(input: &DeriveInput) -> proc_macro2::TokenStream {
     let struct_name = get_struct_name(input);
     let field_methods: Vec<_> = fields
         .iter()
-        .map(|f| generate_field_methods(&input, f))
+        .map(|f| generate_field_methods(input, f))
         .collect();
     let new_fields: Vec<_> = fields
         .iter()

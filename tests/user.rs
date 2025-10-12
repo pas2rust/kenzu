@@ -285,8 +285,8 @@ fn very_long_email_and_names() {
 fn bulk_create_valid_users() -> Result<(), String> {
     for i in 18..=30 {
         let u = User::new()
-            .id(UserId::new(&format!("id-{i}"))?)
-            .name(UserName::new(&format!("Name{i}"))?)
+            .id(UserId::new(format!("id-{i}"))?)
+            .name(UserName::new(format!("Name{i}"))?)
             .password(UserPassword::new("pwd")?)
             .age(UserAge::new(i as u8)?);
         assert!(u.age >= 18 && u.age <= 125);

@@ -14,7 +14,7 @@ pub fn generate_method(input: &DeriveInput, field: &Field) -> TokenStream {
     } = get_opt(&field.attrs);
     let ty = &field.ty;
     let struct_name = get_struct_name(input);
-    let type_name_ts: TokenStream = get_type_name_ts(&struct_name, &field_ident, name);
+    let type_name_ts: TokenStream = get_type_name_ts(&struct_name, field_ident, name);
 
     if is_string(ty) || is_str_ref(ty) {
         let re_ident = Ident::new(
@@ -26,10 +26,7 @@ pub fn generate_method(input: &DeriveInput, field: &Field) -> TokenStream {
             Span::call_site(),
         );
         let pattern = pattern.unwrap_or(".*".to_string());
-        let err = err.unwrap_or(format!(
-            "Regex pattern: {pattern} invalid {}",
-            type_name_ts.to_string()
-        ));
+        let err = err.unwrap_or(format!("Regex pattern: {pattern} invalid {}", type_name_ts));
         let default_expr_tokens = if let Some(d) = default {
             quote! { #d }
         } else {
@@ -68,15 +65,13 @@ pub fn generate_method(input: &DeriveInput, field: &Field) -> TokenStream {
             }
 
         }
-    } else if is_numeric(&ty) {
-        let err_msg = err.unwrap_or(format!("Invalid number for {}", type_name_ts.to_string()));
-        let err_min_msg = err_min.unwrap_or(format!(
-            "value for {} is less than minimum",
-            type_name_ts.to_string()
-        ));
+    } else if is_numeric(ty) {
+        let err_msg = err.unwrap_or(format!("Invalid number for {}", type_name_ts));
+        let err_min_msg =
+            err_min.unwrap_or(format!("value for {} is less than minimum", type_name_ts));
         let err_max_msg = err_max.unwrap_or(format!(
             "value for {} is greater than maximum",
-            type_name_ts.to_string()
+            type_name_ts
         ));
         let default_expr_tokens = if let Some(d) = default {
             quote! { #d }
