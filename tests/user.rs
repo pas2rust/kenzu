@@ -1,10 +1,13 @@
 use kenzu::Builder;
 
+static ID: &str = "123e4567-e89b-12d3-a456-426614174000";
+const NAME: &str = "John Doe";
+
 #[derive(Builder, Debug)]
 pub struct User {
-    #[opt(default = "123e4567-e89b-12d3-a456-426614174000")]
+    #[opt(default = ID)]
     id: String,
-    #[opt(default = "John Doe")]
+    #[opt(default = NAME)]
     name: String,
     #[opt(default = "password123")]
     password: String,

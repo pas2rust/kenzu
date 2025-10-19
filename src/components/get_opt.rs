@@ -3,15 +3,13 @@ use super::prelude::*;
 #[derive(Debug, Default)]
 pub struct Opt {
     pub name: Option<TokenStream>,
-    pub pattern: Option<String>,
-    pub err: Option<String>,
+    pub pattern: Option<TokenStream>,
+    pub err: Option<TokenStream>,
     pub default: Option<TokenStream>,
-
-    // range fields
     pub min: Option<TokenStream>,
     pub max: Option<TokenStream>,
-    pub err_min: Option<String>,
-    pub err_max: Option<String>,
+    pub err_min: Option<TokenStream>,
+    pub err_max: Option<TokenStream>,
 }
 
 pub fn get_opt(attributes: &Vec<Attribute>) -> Opt {
@@ -25,12 +23,12 @@ pub fn get_opt(attributes: &Vec<Attribute>) -> Opt {
                         opt.name = Some(ts);
                     }
                 } else if meta.path.is_ident("pattern") {
-                    if let Ok(lit) = meta.value()?.parse::<LitStr>() {
-                        opt.pattern = Some(lit.value());
+                    if let Ok(expr) = meta.value()?.parse::<syn::Expr>() {
+                        opt.pattern = Some(quote! { #expr });
                     }
                 } else if meta.path.is_ident("err") {
-                    if let Ok(lit) = meta.value()?.parse::<LitStr>() {
-                        opt.err = Some(lit.value());
+                    if let Ok(expr) = meta.value()?.parse::<syn::Expr>() {
+                        opt.err = Some(quote! { #expr });
                     }
                 } else if meta.path.is_ident("default") {
                     if let Ok(expr) = meta.value()?.parse::<syn::Expr>() {
@@ -45,14 +43,15 @@ pub fn get_opt(attributes: &Vec<Attribute>) -> Opt {
                         opt.max = Some(quote! { #expr });
                     }
                 } else if meta.path.is_ident("err_min") {
-                    if let Ok(lit) = meta.value()?.parse::<LitStr>() {
-                        opt.err_min = Some(lit.value());
+                    if let Ok(expr) = meta.value()?.parse::<syn::Expr>() {
+                        opt.err_min = Some(quote! { #expr });
                     }
                 } else if meta.path.is_ident("err_max")
-                    && let Ok(lit) = meta.value()?.parse::<LitStr>()
+                    && let Ok(expr) = meta.value()?.parse::<syn::Expr>()
                 {
-                    opt.err_max = Some(lit.value());
+                    opt.err_max = Some(quote! { #expr });
                 }
+
                 Ok(())
             })
             .unwrap();
