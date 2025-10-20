@@ -14,6 +14,7 @@ pub fn generate_method(input: &DeriveInput, field: &Field) -> TokenStream {
     } = get_opt(&field.attrs);
     let ty = &field.ty;
     let struct_name = get_struct_name(input);
+    let (impl_generics, type_generics, where_clause) = generics_split_for_impl(input);
     let type_name_ts: TokenStream = get_type_name_ts(&struct_name, field_ident, name);
 
     if is_string(ty) || is_str_ref(ty) {
@@ -181,7 +182,7 @@ pub fn generate_method(input: &DeriveInput, field: &Field) -> TokenStream {
             quote! { #struct_ident::default().#field_ident }
         };
         quote! {
-            impl #type_name_ts {
+            impl #impl_generics #type_name_ts #type_generics #where_clause {
                 pub fn default() -> Self {
                     let v: #ty = #default_expr_tokens;
                     #type_name_ts(v)
