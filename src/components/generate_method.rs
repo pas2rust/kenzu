@@ -189,7 +189,8 @@ pub fn generate_method(input: &DeriveInput, field: &Field) -> TokenStream {
                     #type_name_ts(v)
                 }
 
-                pub fn new(v: #ty) -> Result<Self, String> {
+               pub fn new<V: Into<#ty>>(value: V) -> Result<Self, String> {
+                    let v: #ty = value.into();
                     Ok(#type_name_ts(v))
                 }
             }
